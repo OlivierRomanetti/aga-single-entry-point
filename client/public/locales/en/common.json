@@ -1,0 +1,13 @@
+{
+  "logo": "logo-en.png",
+  "main-title": "Login to a portal",
+  "main-subtitle": "Enter your unique identifier to be redirected to your login portal",
+  "help-title": "Forgot login",
+  "help-subtitle": "For immediate assistance, please contact the hotline at the following number: 1-888-888-8888. You can also contact us by email at the following address: support@aga.ca",
+  "cancel": "Cancel",
+  "change-locale": "FR",
+  "identifier": "Login",
+  "required": "This field is required",
+  "validate": "Validate",
+  "placeholder": "Enter a value"
+}

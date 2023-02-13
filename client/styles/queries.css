@@ -1,0 +1,75 @@
+/**********************************/
+/* BELOW 1200px (Landscape Tablets) */
+/**********************************/
+
+@media (max-width: 75em) {
+  html {
+    /* 9px / 16px  */
+    font-size: 56.25%;
+  }
+
+  .frame {
+    max-width: 60rem;
+  }
+
+  .heading-primary {
+    font-size: 3.2rem;
+  }
+
+  .heading-secondary {
+    font-size: 2.5rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2rem;
+  }
+}
+
+/**********************************/
+/* BELOW 944px (Tablets) */
+/**********************************/
+
+@media (max-width: 59em) {
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-corporate {
+    width: 100%;
+  }
+  .section-cta {
+    width: 100%;
+    align-items: start;
+  }
+
+  .btn--form {
+    margin-top: 1.2rem;
+  }
+  .link.fixed {
+    color: white;
+  }
+}
+
+/**********************************/
+/* BELOW 544px (Phones) */
+/**********************************/
+
+@media (max-width: 34em) {
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.4rem 1.6rem;
+  }
+  .frame {
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
+  }
+  .cta {
+    border-radius: 0;
+  }
+  .container {
+    border-bottom: solid 0.5rem white;
+  }
+}

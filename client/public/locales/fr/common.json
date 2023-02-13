@@ -1,0 +1,13 @@
+{
+  "logo": "logo-fr.png",
+  "main-title": "Connexion à un portail",
+  "main-subtitle": "Saisissez votre identifiant unique afin d'être redirigé vers votre portail de connexion",
+  "help-title": "Identifiant oublié",
+  "help-subtitle": "Pour de l'aide immédiate, s'il vous plait contacter le service de support téléphonique au numéro suivant: 1-888-888-8888 Vous pouvez également nous contacter par courriel à l'adresse suivante: support@aga.ca",
+  "cancel": "Retour",
+  "change-locale": "EN",
+  "identifier": "Identifiant",
+  "required": "Ce champ est requis",
+  "validate": "Valider",
+  "placeholder": "Enter a value"
+}
