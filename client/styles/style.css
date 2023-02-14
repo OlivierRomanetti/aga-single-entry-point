@@ -3,7 +3,7 @@
 /***********************************/
 
 img {
-  padding: 1.5rem;
+  padding: 3rem;
   max-width: 100%;
   height: auto;
 }
@@ -39,6 +39,7 @@ img {
   border-radius: 9px;
   background: rgb(242, 242, 242);
   overflow: hidden;
+  border: 1rem solid white;
 }
 
 .cta-text-box {
@@ -71,7 +72,6 @@ img {
   font-size: 1.8rem;
   font-family: inherit;
   color: inherit;
-  border: none;
   background-color: #fff;
   border-radius: 9px;
 }

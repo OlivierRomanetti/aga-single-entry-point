@@ -8,6 +8,14 @@
     font-size: 56.25%;
   }
 
+  img {
+    padding: 1.5rem;
+  }
+
+  .layout--2-cols {
+    grid-template-columns: 1fr 3fr;
+  }
+
   .frame {
     max-width: 60rem;
   }
@@ -30,6 +38,11 @@
 /**********************************/
 
 @media (max-width: 59em) {
+  img {
+    padding: 3rem;
+    height: 100%;
+  }
+
   .layout {
     display: flex;
     flex-direction: column;
@@ -37,25 +50,21 @@
 
   .section-corporate {
     width: 100%;
+    height: 15vh;
   }
   .section-cta {
     width: 100%;
     align-items: start;
+    height: 85vh;
   }
 
   .btn--form {
     margin-top: 1.2rem;
   }
-  .link.fixed {
+  .locale {
     color: white;
+    border-left: 2px solid white;
   }
-}
-
-/**********************************/
-/* BELOW 544px (Phones) */
-/**********************************/
-
-@media (max-width: 34em) {
   .btn,
   .btn:link,
   .btn:visited {
@@ -68,8 +77,18 @@
   }
   .cta {
     border-radius: 0;
+    border: none;
+    justify-content: center;
   }
+
   .container {
-    border-bottom: solid 0.5rem white;
+    margin: none;
+    padding: 0;
+    border-bottom: solid 0.75rem white;
+    max-width: inherit;
+  }
+
+  .cta-form input {
+    width: 75%;
   }
 }

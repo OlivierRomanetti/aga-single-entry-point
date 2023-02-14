@@ -49,13 +49,12 @@ const Signin = () => {
       validated={validated}
       onSubmit={handleSubmit}
     >
-      <Form.Group>
+      <Form.Group controlId="validationCustom">
         <Form.Label>{t('identifier')}</Form.Label>
         <Form.Control
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder={t('placeholder')}
-          aria-describedby="inputGroupPrepend"
           required
         />
         <Form.Control.Feedback type="invalid">
