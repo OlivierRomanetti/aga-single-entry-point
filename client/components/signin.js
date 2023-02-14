@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
@@ -63,12 +63,18 @@ const Signin = () => {
       </Form.Group>
 
       <div className="actions">
-        <Button className="btn btn--form" type="submit">
-          {t('validate')}
-        </Button>
-        <Link href="/help">
-          <div className="link"> {t('help-title')}</div>
-        </Link>
+        {loading ? (
+          <Spinner animation="border" role="status"/>
+        ) : (
+          <>
+            <Button className="btn btn--form" type="submit">
+              {t('validate')}
+            </Button>
+            <Link href="/help">
+              <div className="link"> {t('help-title')}</div>
+            </Link>
+          </>
+        )}
       </div>
     </Form>
   );
