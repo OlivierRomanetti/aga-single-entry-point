@@ -21,11 +21,9 @@ const Signin = () => {
       username,
     },
     onSuccess: (response) => {
-      console.log(response);
       window.location.href = response;
     },
     onError: (error) => {
-      console.log(error);
       router.push('/help');
     },
   });
