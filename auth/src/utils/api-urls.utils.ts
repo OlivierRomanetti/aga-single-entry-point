@@ -17,11 +17,16 @@ export const apiUrls = [
     url: 'https://test-adhesion.aga.ca/api/users',
     apiKey: 'bf4a906219934f7bf6858209ffcaf7c486a73fcb891f39baab398a9899adbba8',
   },
-
   {
     name: 'Assurances-Collectives',
     domain: 'https://assurancescollectives.com/',
     url: 'https://api.assurancescollectives.com/v1/users',
     apiKey: '4b31558e-2e60-42fa-8d6d-1fcd6ee9cdbf',
+  },
+  {
+    name: 'Benefits-my-way',
+    domain: 'https://portal.benefitsmyway.ca/',
+    url: 'https://api.benefitsmyway.ca/api/account/users',
+    apiKey: '9EB852C3-5475-4B2E-845E-D00053FAFA41',
   },
 ];
