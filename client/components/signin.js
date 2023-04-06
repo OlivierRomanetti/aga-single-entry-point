@@ -53,6 +53,7 @@ const Signin = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder={t('placeholder')}
+          disabled={loading}
           required
         />
         <Form.Control.Feedback type="invalid">

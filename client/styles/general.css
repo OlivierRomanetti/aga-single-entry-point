@@ -3,6 +3,12 @@
   margin: 0;
   box-sizing: border-box;
 }
+*:disabled {
+  background-color: dimgrey;
+  color: linen;
+  opacity: 1;
+}
+
 
 html {
   font-size: 62.5%;
