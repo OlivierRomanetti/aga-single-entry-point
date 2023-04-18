@@ -2,16 +2,15 @@
 /* CORPORATE SECTION */
 /***********************************/
 
-img {
-  padding: 3rem;
-  max-width: 100%;
-  height: auto;
-}
-
 .section-corporate {
   background-color: #003b75;
   height: 100%;
-  width: auto;
+}
+.logo {
+  padding: 2rem;
+  height: 14rem;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .actions {

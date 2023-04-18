@@ -45,13 +45,15 @@ router.post(
           .findIndex((item) => item.exist);
         const { loginUrl } = possibleHits.find((item) => item.exist);
 
-        res
-          .status(200)
-          .send(
-            JSON.stringify(
-              `${apiUrls[oneHitIndex].domain}${loginUrl.toLowerCase()}`
+        const { domain, queryParamsFormat } = apiUrls[oneHitIndex];
+
+        const apiLoginPath = queryParamsFormat
+          ? JSON.stringify(
+              `${domain}${loginUrl}${queryParamsFormat}${username}`
             )
-          );
+          : JSON.stringify(`${domain}${loginUrl}`);
+
+        res.status(200).send(apiLoginPath);
       })
       .catch((error) => {
         throw new BadRequestError('Something went wrong');

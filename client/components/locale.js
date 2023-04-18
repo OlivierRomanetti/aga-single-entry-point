@@ -12,7 +12,9 @@ const Locale = () => {
 
   return (
     <Link href={router.pathname} locale={changeTo}>
-      <div className="locale">{t('change-locale')}</div>
+      <div className="locale">
+        <div className="locale-center">{t('change-locale')}</div>
+      </div>
     </Link>
   );
 };

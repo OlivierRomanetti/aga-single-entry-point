@@ -132,7 +132,7 @@ body {
 .link:hover,
 .link:active {
   color: #003b75;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1rem solid transparent;
 }
 
 .locale {
@@ -144,6 +144,12 @@ body {
   border-left: 2px solid #003b75;
   cursor: pointer;
   padding: 1rem 2rem;
+}
+.locale-center {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  min-width: 2.5rem; 
 }
 
 .invalid-feedback {

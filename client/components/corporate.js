@@ -4,7 +4,7 @@ const Corporate = () => {
   const { t } = useTranslation('common');
   return (
     <section className="section-corporate">
-      <img src={t('logo')} alt="AGA logo" />
+      <img src={t('logo')} className="logo" alt="AGA logo" />
     </section>
   );
 };
