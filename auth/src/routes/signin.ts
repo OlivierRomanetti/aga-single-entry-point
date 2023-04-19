@@ -22,7 +22,7 @@ router.post(
     const concurrentRequests = apiUrls.map(({ url, apiKey }) =>
       axios.get(url, {
         headers: {
-          apiKey,
+          apiKey: process.env[apiKey],
         },
         params: {
           username,

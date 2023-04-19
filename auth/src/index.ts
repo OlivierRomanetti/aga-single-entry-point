@@ -1,10 +1,10 @@
 import { app } from './app';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const start = async () => {
-  app.listen(3000, () => {
-    // TODO: PORT à remplacer avec variable d'environnement
-    console.log('Listening on port 3000!!!!!!!!');
-  });
+  app.listen(process.env.PORT, () => {});
 };
 
 start();
