@@ -6,13 +6,13 @@ export const apiUrls = [
     apiKey: 'JDBENEFITS_API_KEY',
     queryParamsFormat: '',
   },
-  {
-    name: 'Adherents',
-    domain: 'https://adherents.aga.ca',
-    url: 'https://api.adherents.aga.ca/api/login-portal/users',
-    apiKey: 'ADHERENTS_API_KEY',
-    queryParamsFormat: '',
-  },
+  // {
+  //   name: 'Adherents',
+  //   domain: 'https://adherents.aga.ca',
+  //   url: 'https://api.adherents.aga.ca/api/login-portal/users',
+  //   apiKey: 'ADHERENTS_API_KEY',
+  //   queryParamsFormat: '',
+  // },
   {
     name: 'Adhesion',
     domain: 'https://adhesion.aga.ca',
