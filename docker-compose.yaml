@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    restart: always
+    environment:
+      NODE_ENV: production
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    restart: always
+    depends_on:
+      - auth
