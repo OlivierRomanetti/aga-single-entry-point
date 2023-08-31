@@ -5,11 +5,17 @@ services:
       context: ./auth
       dockerfile: Dockerfile
     ports:
-      - '8080:8080'
+      - '8080:8080' # a terme à enlever
     restart: always
     environment:
       NODE_ENV: production
-
+      PORT: 8080
+      JDBENEFITS_API_KEY: 7PQF8Pp3uuxcNjE7L9YB3ZRkTRdCKhmER8poP4VLoctuKVu95Ccx9MBLRFXumGA5
+      ADHERENTS_API_KEY: 661588e7fa9a44dcb59ee0689243146d9732c58f6bc2e39b893999b99bbe9ab8
+      ADHESION_API_KEY: bf4a906219934f7bf6858209ffcaf7c486a73fcb891f39baab398a9899adbba8
+      WBLLIBERT_API_KEY: 4b31558e-2e60-42fa-8d6d-1fcd6ee9cdbf
+      PPIBMW_API_KEY: 9EB852C3-5475-4B2E-845E-D00053FAFA41
+      OLIVERAPP_API_KEY: LBbT7euLaprDWaXPE-5Umk!v8#*ry2XUtF%f$Hs!+D-WK4pz!!uJZ3QMNsFbYWXT
   client:
     build:
       context: ./client
@@ -17,5 +23,7 @@ services:
     ports:
       - '3000:3000'
     restart: always
+    environment:
+      REACT_APP_BACKEND_URL: http://auth:8080/api/users/signin
     depends_on:
       - auth
