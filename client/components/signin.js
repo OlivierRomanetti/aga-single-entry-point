@@ -15,7 +15,7 @@ const Signin = () => {
   const { t } = useTranslation('common');
 
   const { doRequest } = useRequest({
-    url: "http://localhost:8080/api/users/signin",
+    url: "/api/users/signin",
     method: 'post',
     body: {
       username,

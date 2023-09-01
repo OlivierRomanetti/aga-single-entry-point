@@ -27,3 +27,12 @@ services:
       REACT_APP_BACKEND_URL: http://auth:8080/api/users/signin
     depends_on:
       - auth
+  nginx:
+    image: nginx:latest
+    ports:
+      - '8081:80' # Port 8081 du serveur local vers le port 80 de Nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf # Chemin vers votre fichier de configuration Nginx
+    depends_on:
+      - auth
+      - client

@@ -12,7 +12,7 @@ COPY tsconfig.json .
 RUN npm install --production
 
 # Installation des dépendances de développement pour TypeScript (supprimées en production)
-RUN npm install --save-dev @types/cors
+RUN npm install --save-dev @types/jest
 
 
 # Copier le reste des fichiers de l'application
