@@ -13,13 +13,13 @@ export const apiUrls = [
     apiKey: 'ADHERENTS_API_KEY',
     queryParamsFormat: '',
   },
-  // {
-  //   name: 'Adhesion',
-  //   domain: 'https://adhesion.aga.ca',
-  //   url: 'https://adhesion.aga.ca/api/users',
-  //   apiKey: 'ADHESION_API_KEY',
-  //   queryParamsFormat: '?userName=',
-  // },
+  {
+    name: 'Adhesion',
+    domain: 'https://adhesion.aga.ca',
+    url: 'https://adhesion.aga.ca/api/users',
+    apiKey: 'ADHESION_API_KEY',
+    queryParamsFormat: '?userName=',
+  },
   {
     name: 'WBL-LiberT',
     domain: 'https://assurancescollectives.com',
@@ -34,11 +34,11 @@ export const apiUrls = [
     apiKey: 'PPIBMW_API_KEY',
     queryParamsFormat: '',
   },
-  // {
-  //   name: 'Oliver-App',
-  //   domain: 'https://agile.ollieportal.co',
-  //   url: 'https://agile.ollieportal.co/ords/oliver/sep/accounts',
-  //   apiKey: 'OLIVERAPP_API_KEY',
-  //   queryParamsFormat: '',
-  // },
+  {
+    name: 'Oliver-App',
+    domain: 'https://agile.ollieportal.co',
+    url: 'https://agile.ollieportal.co/ords/oliver/sep/accounts',
+    apiKey: 'OLIVERAPP_API_KEY',
+    queryParamsFormat: '',
+  },
 ];

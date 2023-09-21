@@ -34,5 +34,8 @@ COPY --from=builder /app/package.json ./package.json
 # Exposez le port sur lequel votre application Express écoute
 EXPOSE 8080
 
+# USER
+USER nonroot
+
 # Démarrez votre application Express
 CMD ["npm", "start"]

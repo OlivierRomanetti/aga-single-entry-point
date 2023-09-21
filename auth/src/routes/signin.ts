@@ -30,22 +30,20 @@ router.post(
       })
     );
 
-    await Promise.all(concurrentRequests)
-      .then((response) => {
-        const possibleHits = response
-          .map((item) => item.data)
-          .filter((data) => data.exist);
-        const isOneHit = possibleHits.length === 1;
-        if (!isOneHit) {
-          throw new Error('Not exactly one hit');
+    await Promise.allSettled(concurrentRequests)
+      .then((results) => {
+        const foundApiIndex = results.findIndex(
+          (result) => result.status === 'fulfilled' && result.value.data.exist
+        );
+
+        if (foundApiIndex === -1) {
+          throw new Error('User not found');
         }
+        const { loginUrl } = (
+          results[foundApiIndex] as PromiseFulfilledResult<any>
+        ).value.data;
 
-        const oneHitIndex = response
-          .map((item) => item.data)
-          .findIndex((item) => item.exist);
-        const { loginUrl } = possibleHits.find((item) => item.exist);
-
-        const { domain, queryParamsFormat } = apiUrls[oneHitIndex];
+        const { domain, queryParamsFormat } = apiUrls[foundApiIndex];
 
         const apiLoginPath = queryParamsFormat
           ? JSON.stringify(
