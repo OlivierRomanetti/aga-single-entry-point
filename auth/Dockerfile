@@ -35,6 +35,8 @@ COPY --from=builder /app/package.json ./package.json
 EXPOSE 8080
 
 # USER
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nonroot
 USER nonroot
 
 # Démarrez votre application Express
