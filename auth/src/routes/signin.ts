@@ -1,11 +1,83 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { apiUrls } from '../utils/api-urls.utils';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { BadRequestError } from '../errors/bad-request-error';
 import { validateRequest } from '../middlewares/validate-request';
 
+// ---------------------------------------------------
+const MAX_API_TIMEOUT = 1000;
+// ---------------------------------------------------
+
+type ApiInfos = {
+  name: string;
+  domain: string;
+  url: string;
+  apiKey: string;
+  queryParamsFormat: string;
+};
+
+type LoginPathParams = {
+  domain: string;
+  loginUrl: string;
+  queryParamsFormat: string;
+  username: string;
+};
+
+type ApiResponse = AxiosResponse<any>;
+
+// ---------------------------------------------------
+
+const setConcurrentRequests = (username: string): Promise<ApiResponse>[] =>
+  apiUrls.map(({ url, apiKey }: ApiInfos) =>
+    axios.get(url, {
+      headers: {
+        apiKey: process.env[apiKey],
+      },
+      params: {
+        username,
+      },
+      timeout: MAX_API_TIMEOUT,
+    })
+  );
+
+// ---------------------------------------------------
+
+type ApiUrl = {
+  url: string;
+  apiKey: string;
+  // ... Autres propriétés
+};
+
+const getApiInfos = (results: PromiseSettledResult<ApiResponse>[]) => {
+  const apiIndex = results.findIndex((result) => {
+    return result.status === 'fulfilled' && result.value.data.exist;
+  });
+  if (apiIndex === -1) {
+    throw new Error('User not found');
+  }
+  const { loginUrl } = (
+    results[apiIndex] as PromiseFulfilledResult<AxiosResponse>
+  ).value.data;
+
+  const { domain, queryParamsFormat } = apiUrls[apiIndex];
+  return { loginUrl, domain, queryParamsFormat };
+};
+
+// ---------------------------------------------------
+
+const setApiLoginPath = (params: LoginPathParams): string => {
+  const { domain, loginUrl, queryParamsFormat, username } = params;
+  return queryParamsFormat
+    ? JSON.stringify(`${domain}${loginUrl}${queryParamsFormat}${username}`)
+    : JSON.stringify(`${domain}${loginUrl}`);
+};
+
 const router = express.Router();
+
+// ---------------------------------------------------
+// End Point
+// ---------------------------------------------------
 
 router.post(
   '/api/users/signin',
@@ -19,39 +91,14 @@ router.post(
   async (req: Request, res: Response) => {
     const { username } = req.body;
 
-    const concurrentRequests = apiUrls.map(({ url, apiKey }) =>
-      axios.get(url, {
-        headers: {
-          apiKey: process.env[apiKey],
-        },
-        params: {
-          username,
-        },
-      })
-    );
-
-    await Promise.allSettled(concurrentRequests)
+    await Promise.allSettled(setConcurrentRequests(username))
       .then((results) => {
-        const foundApiIndex = results.findIndex(
-          (result) => result.status === 'fulfilled' && result.value.data.exist
+        res.status(200).send(
+          setApiLoginPath({
+            ...getApiInfos(results),
+            username,
+          })
         );
-
-        if (foundApiIndex === -1) {
-          throw new Error('User not found');
-        }
-        const { loginUrl } = (
-          results[foundApiIndex] as PromiseFulfilledResult<any>
-        ).value.data;
-
-        const { domain, queryParamsFormat } = apiUrls[foundApiIndex];
-
-        const apiLoginPath = queryParamsFormat
-          ? JSON.stringify(
-              `${domain}${loginUrl}${queryParamsFormat}${username}`
-            )
-          : JSON.stringify(`${domain}${loginUrl}`);
-
-        res.status(200).send(apiLoginPath);
       })
       .catch((error) => {
         throw new BadRequestError('Something went wrong');
